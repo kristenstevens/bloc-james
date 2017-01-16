@@ -36,7 +36,7 @@
      artist: 'The Earth',
      label: 'Earth',
      year: '2017',
-     albumArtUrl: 'assets/images/album_covers/20.png',
+     albumArtUrl: 'assets/images/album_covers/09.png',
      songs: [
          { title: 'Yosemite', duration: '2:39' },
          { title: 'Grand Canyon', duration: '4:28' },
@@ -58,14 +58,13 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
-var setCurrentAlbum = function(album) {
-   
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
- 
+
+var setCurrentAlbum = function(album) { 
      albumTitle.firstChild.nodeValue = album.title;
      albumArtist.firstChild.nodeValue = album.artist;
      albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
@@ -78,28 +77,18 @@ var setCurrentAlbum = function(album) {
      }
  };
  
- window.onload = function() {
-     setCurrentAlbum(albumPicasso);
- };
-
-// Function to toggle album content
-
-function albumToggle(album) {
-    if (this.album = albumPicasso){
-      setCurrentAlbum(albumMarconi);  
-    }
-    if (this.album = albumMarconi){
-        setCurrentAlbum(albumNationalParks);
-    }
-    if (this.album = albumNationalParks){
-        setCurrentAlbum(albumPicasso);
-    }
-    else return null;
+ 
+window.onload = function(){
+    setCurrentAlbum(albumPicasso);
+    var i = 1;
+    var albums = [albumPicasso, albumMarconi, albumNationalParks];
+    albumImage.addEventListener("click", function(event){
+        setCurrentAlbum(albums[i]);
+        i ++;
+        if (album[i] == albums.length){
+         i = 0;
+        }
+    });
 }
-
-// Add event listener to album cover
-
-var albumCoverListener = document.getElementsByClassName('album-cover-art');
-albumCoverListener.addEventListener("click", albumToggle);
                     
   

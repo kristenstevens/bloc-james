@@ -5,11 +5,11 @@ var revealPoint = function(points) {
          points.style.transform = "scaleX(1) translateY(0)";
          points.style.msTransform = "scaleX(1) translateY(0)";
          points.style.WebkitTransform = "scaleX(1) translateY(0)";
-}
+};
      
 var animatePoints = function(points){
     forEach(points, revealPoint);
-}
+};
 
 
 window.onload = function() {

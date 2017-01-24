@@ -70,7 +70,13 @@ if (element) {
         currentParent = currentParent.parentElement;
     }
 return currentParent;
-    }
+}
+else if (element.parentElement === null) { //check if parent of passed element is not defined, i.e. null
+    alert(“No parent found”);
+}
+else if (currentParent.className !== targetClass){ //check if there is no match between passed targetClass and classes up DOM
+    alert(“No parent found with that class name”);
+}
 };
  
 var getSongItem = function(element) {

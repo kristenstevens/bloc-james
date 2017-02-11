@@ -9,12 +9,12 @@ var createSongRow = function(songNumber, songName, songLength) {
       ;
  
      var $row = $(template);
-    
+
      var clickHandler = function(){
         var songNumber = parseInt($(this).attr('data-song-number'));
          
         if (currentlyPlayingSongNumber !== null) {
-            var currentlyPlayingCell = $('.song-item-number[parseInt(data-song-number)="' + currentlyPlayingSongNumber + '"]');
+            var currentlyPlayingCell = $('.song-item-number[data-song-number ="' + currentlyPlayingSongNumber + '"]');
             currentlyPlayingCell.html(currentlyPlayingSongNumber);       
         }        
     
@@ -35,7 +35,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     
      var onHover = function(event){
         var songNumberCell = $(this).find('.song-item-number');
-        var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+        var songNumber = songNumberCell.attr('data-song-number');
 
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(playButtonTemplate);
@@ -44,7 +44,7 @@ var createSongRow = function(songNumber, songName, songLength) {
     
      var offHover = function(event){
         var songNumberCell = $(this).find('.song-item-number');
-        var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+        var songNumber = songNumberCell.attr('data-song-number');
 
         if (songNumber !== currentlyPlayingSongNumber) {
             songNumberCell.html(songNumber);
@@ -52,12 +52,10 @@ var createSongRow = function(songNumber, songName, songLength) {
         console.log("songNumber type is " + typeof songNumber + "\n and currentlyPlayingSongNumber type is " + typeof currentlyPlayingSongNumber); 
      };
     
-     $row.find('.song-item-number').clock(clickHandler);
-    
+     $row.find('.song-item-number').click(clickHandler);
      $row.hover(onHover, offHover);
-    
      return $row;
- };
+};
 
 var setCurrentAlbum = function(album) {
      currentAlbum = album;
@@ -78,7 +76,6 @@ var setCurrentAlbum = function(album) {
          $albumSongList.append($newRow);
      }
  }; 
-
  
  var trackIndex = function(album, song) {
      return album.songs.indexOf(song);
